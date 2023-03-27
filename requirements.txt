@@ -1,0 +1,2 @@
+molmass==2022.12.9
+streamlit==1.20.0
