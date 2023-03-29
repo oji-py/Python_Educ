@@ -133,7 +133,6 @@ try:
             solvent_askml = st.selectbox("Is the solvent in grams or moles? ", ["Grams [g]", "Kilograms [Kg]", "Moles [mol]"], key="nines")
             molmass_ml = molar_mass(solute_ml)
             moles_solute = solute_mass_ml/molmass_ml
-            
             if solvent_askml == "Kilograms [Kg]":  # == is for the condition
                 solvent_massml = st.number_input("Enter the kilograms of the solvent: ", key="fourteeni")  # equal to the number enterede in the input not the input
                 molality(moles_solute, solvent_massml)
@@ -148,6 +147,8 @@ try:
                 molality(moles_solute, solvent_massml_kg)
         elif solute_askml == "Moles [mol]":
             solute_molml = st.number_input("Enter the moles of the solute: ", key="seventeeni")
+            solvent_ml = st.text_input("Enter the chemical formula for the solvent properly: ", key="sixt")
+            solvent_askml = st.selectbox("Is the solvent in grams or moles? ", ["Grams [g]", "Kilograms [Kg]", "Moles [mol]"], key="nines")
             if solvent_askml == "Kilograms [Kg]":  # == is for the condition
                 solvent_massml = st.number_input("Enter the kilograms of the solvent: ", key="eighteeni")  # equal to the number enterede in the input not the input
                 molality(solute_molml, solvent_massml)
