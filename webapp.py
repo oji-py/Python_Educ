@@ -127,12 +127,13 @@ try:
     elif user_inp == "Molality":
         solute_ml = st.text_input("Enter the chemical formula for the solute properly: ", key="fivet")
         solute_askml = st.selectbox("Is the solute in grams or moles? ", ["Grams [g]", "Moles [mol]"], key="eights")
-        solvent_ml = st.text_input("Enter the chemical formula for the solvent properly: ", key="sixt")
-        solvent_askml = st.selectbox("Is the solvent in grams or moles? ", ["Grams [g]", "Kilograms [Kg]", "Moles [mol]"], key="nines")
         if solute_askml == "Grams [g]":
             solute_mass_ml = float(st.number_input("Enter the grams of the solute: ", key="thirteeni"))
+            solvent_ml = st.text_input("Enter the chemical formula for the solvent properly: ", key="sixt")
+            solvent_askml = st.selectbox("Is the solvent in grams or moles? ", ["Grams [g]", "Kilograms [Kg]", "Moles [mol]"], key="nines")
             molmass_ml = molar_mass(solute_ml)
             moles_solute = solute_mass_ml/molmass_ml
+            
             if solvent_askml == "Kilograms [Kg]":  # == is for the condition
                 solvent_massml = st.number_input("Enter the kilograms of the solvent: ", key="fourteeni")  # equal to the number enterede in the input not the input
                 molality(moles_solute, solvent_massml)
@@ -174,7 +175,9 @@ try:
                     solvent_mass = st.number_input("Enter the grams of the solvent:", key="twentytwoi")
                     ppm_solu(solute_mass, solvent_mass)
                 elif solvent_askppm =="Moles":
-                    pass
+                    solvent_mole = st.number_input("Enter the moles of the solvent", key="twentythreei")
+                    molarmass = molar_mass(solvent_ppm)
+                    solvent_massml_kg = (solvent_mole * molarmass)/1000
         elif solution_ask == "Yes":
             solvent_askppm = st.selectbox("What is the unit of the solution?", ["Grams [g]", "Kilogram [Kg]", "Moles [mol]", "Liter [L]", "Millileter [mL]"], key="twelves")
             if solvent_askppm == "Grams [g]":
